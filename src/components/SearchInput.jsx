@@ -1,15 +1,20 @@
-import React from 'react';
+import React , { useState } from 'react';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button';
 
 
 
-const SearchInput = ({typing}) => {
-    return (  
+const SearchInput = ({ typing }) => {
+    const [ written, setWritten] = useState();
+    return (
         <>
             <InputGroup>
+                <InputGroup.Prepend>
+                    <Button onClick={()=>(typing(written))} variant="primary">Search</Button>
+                </InputGroup.Prepend>
                 <FormControl
-                    onChange={(event)=>(typing(event.target.value))}
+                    onChange={(event) => (setWritten(event.target.value))}
                     aria-describedby=''
                     placeholder="Enter book's name..."
                 />
@@ -17,5 +22,5 @@ const SearchInput = ({typing}) => {
         </>
     );
 }
- 
+
 export default SearchInput;
