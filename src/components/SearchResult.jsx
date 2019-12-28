@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import { ListGroup } from 'react-bootstrap';
 
 
 const SearchResult = ({ input }) => {
-
+    
     const [result, loading] = useAsyncHook(input);
 
     return (
         <>
-            {loading === "false" ? (
+            {loading === true ? (
                 <h1>Search for Books</h1>
-            ) : loading === "null" ? (
+            ) : loading === null ? (
                 <h1>No Book Found</h1>
             ) : (
-                result.map(item => {
-                    return <p>{item.title}</p>;
-                })
+                <ListGroup>
+                    {result.map(item => (
+                        <ListGroup.Item key={item.id} >{item.volumeInfo.title}</ListGroup.Item>
+                    ))}
+                </ListGroup>
             )}
         </>
     );
@@ -24,29 +27,28 @@ export default SearchResult;
 
 function useAsyncHook(searchBook) {
     const [result, setResult] = useState([]);
-    const [loading, setLoading] = useState("false");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchBookList() {
             try {
-                setLoading("true");
+
                 const response = await fetch(
                     `https://www.googleapis.com/books/v1/volumes?q=${searchBook}`
                 );
                 const json = await response.json();
-                setResult(
-                    json.items.map(item => {
-                        return item.volumeInfo;
-                    })
-                );
+                console.log(json.items);
+                setLoading(false);
+                setResult(json.items);
             } catch (error) {
-                setLoading("null");
+                setLoading(null);
             }
         }
 
-        if (searchBook !== "") {
+        if (searchBook) {
             fetchBookList();
         }
+
     }, [searchBook]);
 
     return [result, loading];

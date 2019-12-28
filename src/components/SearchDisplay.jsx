@@ -4,7 +4,7 @@ import SearchResult from "./SearchResult";
 
 
 const SearchDisplay = () => {
-    const [input, setInput] = useState('Harry Potter');
+    const [input, setInput] = useState();
 
     return ( 
         <>
