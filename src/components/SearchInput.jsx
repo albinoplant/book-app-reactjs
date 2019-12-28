@@ -14,6 +14,7 @@ const SearchInput = ({ typing }) => {
                     <Button onClick={()=>(typing(written))} variant="primary">Search</Button>
                 </InputGroup.Prepend>
                 <FormControl
+                    onKeyUp={(event)=> (event.key==='Enter') && typing(written)}
                     onChange={(event) => (setWritten(event.target.value))}
                     aria-describedby=''
                     placeholder="Enter book's name..."

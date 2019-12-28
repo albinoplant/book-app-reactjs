@@ -13,13 +13,17 @@ const SearchResult = ({ input }) => {
             ) : loading === null ? (
                 <h3>No Book Found</h3>
             ) : (
-                <ListGroup>
+                <ListGroup className='mt-5'>
                     {result.map(item => (
                         <ListItem key={item.id} 
                             title={item.volumeInfo.title}
+                            subtitle={item.volumeInfo.subtitle}
                             img={item.volumeInfo.imageLinks === undefined
                                 ? ""
                                 : `${item.volumeInfo.imageLinks.thumbnail}`}
+                            author={item.volumeInfo.authors}
+                            pages={item.volumeInfo.pageCount}
+                            year={item.volumeInfo.publishedDate}
                         />
                     ))}
                 </ListGroup>
