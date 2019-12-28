@@ -5,12 +5,12 @@ import './navbar.css';
 import SavedList from './SavedList'
 
 
-const SideNavbar = () => {
-    const [showNavbar, setShowNavbar] = useState(true);
+const SideNavbar = ({savedList}) => {
+    const [showNavbar, setShowNavbar] = useState(false);
     
     return (
         <>
-        <Button onClick={()=>setShowNavbar(true)} variant='outline-secondary' style={{cursor:'pointer', height:'10em',position:'relative',left:'-10px'}}>&#9776;</Button>
+        <Button onClick={()=>setShowNavbar(true)} variant='outline-secondary' style={{cursor:'pointer', height:'10em',position:'fixed',left:'-10px', top:'50vh'}}>&#9776;</Button>
         <CSSTransition
             in={showNavbar}
             timeout={300}
@@ -25,7 +25,7 @@ const SideNavbar = () => {
                 <Button className='' variant="outline-secondary" onClick={()=>setShowNavbar(false)}>&times;</Button>
                 </Col>
             </Row>
-            <SavedList />
+            <SavedList savedList={savedList} />
             </Container>
         </aside>
         </CSSTransition>
@@ -37,7 +37,7 @@ export default SideNavbar;
 
 const styles = {
     height: '100%',
-    width: '250px',
+    width: '300px',
     position: 'fixed',
     zIndex: '10',
     top: '0',

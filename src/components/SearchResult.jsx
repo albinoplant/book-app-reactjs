@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import  ListGroup  from 'react-bootstrap/ListGroup';
 import ListItem from './ListItem';
 
-const SearchResult = ({ input }) => {
+const SearchResult = ({ input, add, state }) => {
     
     const [result, loading] = useAsyncHook(input);
 
@@ -15,7 +15,11 @@ const SearchResult = ({ input }) => {
             ) : (
                 <ListGroup className='mt-5'>
                     {result.map(item => (
-                        <ListItem key={item.id} 
+                        <ListItem
+                            saveBook={add}
+                            state={state}
+                            key={item.id}
+                            id={item.id} 
                             title={item.volumeInfo.title}
                             subtitle={item.volumeInfo.subtitle}
                             img={item.volumeInfo.imageLinks === undefined

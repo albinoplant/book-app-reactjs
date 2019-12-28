@@ -3,13 +3,13 @@ import SearchInput from "./SearchInput";
 import SearchResult from "./SearchResult";
 
 
-const SearchDisplay = () => {
+const SearchDisplay = ({add, state}) => {
     const [input, setInput] = useState();
 
     return ( 
         <>
             <SearchInput typing={setInput} />
-            <SearchResult input={input} />
+            <SearchResult add={add} state={state} input={input} />
         </>
      );
 }

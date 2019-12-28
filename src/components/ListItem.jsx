@@ -1,7 +1,7 @@
 import React from "react";
 import { ListGroup, Row, Col, Button } from 'react-bootstrap';
 
-const ListItem = ({ title, img, subtitle, author, pages, year }) => {
+const ListItem = ({ title, img, subtitle, author, pages, year, saveBook, state, id}) => {
     return (
         <ListGroup.Item className='p2'>
             <Row>
@@ -18,7 +18,7 @@ const ListItem = ({ title, img, subtitle, author, pages, year }) => {
                     </Row>
                 </Col>
                 <Col className='col-1'>
-                    <Button>+</Button>
+                    <Button onClick={()=>saveBook(state => [...state,{title,img,subtitle,id}])}>+</Button>
                 </Col>
             </Row>
         </ListGroup.Item>);
