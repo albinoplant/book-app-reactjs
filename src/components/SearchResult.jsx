@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { ListGroup } from 'react-bootstrap';
-
+import  ListGroup  from 'react-bootstrap/ListGroup';
+import ListItem from './ListItem';
 
 const SearchResult = ({ input }) => {
     
@@ -9,13 +9,18 @@ const SearchResult = ({ input }) => {
     return (
         <>
             {loading === true ? (
-                <h1>Search for Books</h1>
+                <h3 className='text-secondary text-center mt-2'>Search for Books</h3>
             ) : loading === null ? (
-                <h1>No Book Found</h1>
+                <h3>No Book Found</h3>
             ) : (
                 <ListGroup>
                     {result.map(item => (
-                        <ListGroup.Item key={item.id} >{item.volumeInfo.title}</ListGroup.Item>
+                        <ListItem key={item.id} 
+                            title={item.volumeInfo.title}
+                            img={item.volumeInfo.imageLinks === undefined
+                                ? ""
+                                : `${item.volumeInfo.imageLinks.thumbnail}`}
+                        />
                     ))}
                 </ListGroup>
             )}

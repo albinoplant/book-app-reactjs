@@ -1,9 +1,11 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Button from 'react-bootstrap/Button';
-import SearchDisplay from './SearchDisplay';
+import  PopToast  from './PopToast';
 
 const HeaderComponent = () => {
+
+    const [ show, setShow ] = useState(false);
     return ( 
         <>
             <Jumbotron className='border '>
@@ -12,9 +14,10 @@ const HeaderComponent = () => {
                     With this app you can build a collection of your favourie books!
                     You can also save positions to your reading queue.
                 </p>
-                <Button>About me</Button>
+                <Button onClick={()=>setShow(!show)}>About me</Button>
+                <PopToast show={show}/>
             </Jumbotron>
-            <SearchDisplay/>
+
         </>
      );
 }

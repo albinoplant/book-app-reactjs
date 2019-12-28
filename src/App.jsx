@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import HeaderComponent from './components/HeaderComponent';
-import SearchResult from './components/SearchResult';
+import SearchDisplay from './components/SearchDisplay';
 
 
 
@@ -10,7 +10,7 @@ function App() {
   return (
     <Container className='mt-3'>
       <HeaderComponent />
-      <SearchResult />
+      <SearchDisplay />
     </Container>
   );
 }
