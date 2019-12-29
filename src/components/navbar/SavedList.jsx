@@ -1,29 +1,35 @@
 import React from 'react';
-import { ListGroup, Col, Row, Container } from 'react-bootstrap';
+import { ListGroup, Col, Row, Container, Button } from 'react-bootstrap';
 
-const SavedList = ({ savedList }) => {
+const SavedList = ({ savedList, remove }) => {
     return (
         <>
             <ListGroup className='mt-5'>
-                {savedList.map(item => (
+                {savedList.map((item, i) => (
                     <ListGroup.Item key={item.id}>
                         <Container>
                             <Row>
-                                <Col className='col-6'>
+                                <Col xs={5}>
                                     <img className='img-fluid ' src={item.img === undefined
                                         ? ""
                                         : `${item.img}`}
                                         alt='Book cover'
                                     />
                                 </Col>
-                                <Col className='col-6'>
+                                <Col xs={6}>
                                     <p>{item.title}
-                                        <span>{` ${item.subtitle}`}</span></p>
+                                        <span>{item.subtitle === undefined
+                                            ? ""
+                                            : ` ${item.subtitle}`}</span></p>
+                                </Col>
+                                <Col xs={1}>
+                                    <Button onClick={
+                                        () => {remove(savedList.filter((it, index) => index !== i))}}>-</Button>
                                 </Col>
                             </Row>
                         </Container>
                     </ListGroup.Item>
-                ))}
+            ))}
             </ListGroup>
         </>
     );

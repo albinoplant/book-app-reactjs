@@ -13,10 +13,10 @@ function App() {
   return (
     <>
     <Container className='mt-3'>
-      <HeaderComponent />
+      <HeaderComponent  />
       <SearchDisplay add={setSaved} state={saved} />
     </Container>
-    <Navbar savedList={saved} />
+    <Navbar savedList={saved} remove={setSaved} />
     </>
   );
 }

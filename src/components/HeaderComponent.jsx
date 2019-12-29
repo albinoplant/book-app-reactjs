@@ -9,7 +9,7 @@ const HeaderComponent = () => {
     return ( 
         <>
             <Jumbotron className='border '>
-                <h1 className='display-4'>Welcome to BookSearch app</h1>
+                <h1 style={{fontWeight:'300'}} >Welcome to Book Search app</h1>
                 <p className='text-secondary'>
                     With this app you can build a collection of your favourie books!
                     You can also save positions to your reading queue.

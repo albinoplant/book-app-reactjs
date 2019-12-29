@@ -5,12 +5,12 @@ import './navbar.css';
 import SavedList from './SavedList'
 
 
-const SideNavbar = ({savedList}) => {
+const SideNavbar = ({savedList, remove}) => {
     const [showNavbar, setShowNavbar] = useState(false);
     
     return (
         <>
-        <Button onClick={()=>setShowNavbar(true)} variant='outline-secondary' style={{cursor:'pointer', height:'10em',position:'fixed',left:'-10px', top:'50vh'}}>&#9776;</Button>
+        <Button onClick={()=>setShowNavbar(true)} variant='light shadow' style={{cursor:'pointer', height:'10em',position:'fixed', zIndex:'9',left:'-12px', top:'60vh'}}>&#9776;</Button>
         <CSSTransition
             in={showNavbar}
             timeout={300}
@@ -25,7 +25,7 @@ const SideNavbar = ({savedList}) => {
                 <Button className='' variant="outline-secondary" onClick={()=>setShowNavbar(false)}>&times;</Button>
                 </Col>
             </Row>
-            <SavedList savedList={savedList} />
+            <SavedList savedList={savedList} remove={remove} />
             </Container>
         </aside>
         </CSSTransition>
