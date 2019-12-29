@@ -10,7 +10,7 @@ const SideNavbar = ({savedList, remove}) => {
     
     return (
         <>
-        <Button onClick={()=>setShowNavbar(true)} variant='light shadow' style={{cursor:'pointer', height:'10em',position:'fixed', zIndex:'9',left:'-12px', top:'60vh'}}>&#9776;</Button>
+        <Button onClick={()=>setShowNavbar(true)} variant='primary shadow' style={{cursor:'pointer', height:'10em',position:'fixed', zIndex:'9',left:'-12px', top:'60vh'}}>&#9776;</Button>
         <CSSTransition
             in={showNavbar}
             timeout={300}
@@ -22,7 +22,7 @@ const SideNavbar = ({savedList, remove}) => {
             <Row className='m-3'>
                 <Col className='col-9'/>
                 <Col className='col-3'>
-                <Button className='' variant="outline-secondary" onClick={()=>setShowNavbar(false)}>&times;</Button>
+                <Button variant="outline-secondary" onClick={()=>setShowNavbar(false)}>&times;</Button>
                 </Col>
             </Row>
             <SavedList savedList={savedList} remove={remove} />
